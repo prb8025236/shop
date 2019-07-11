@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+
+    <!--<properties resource="db.properties"/>-->
+
+    <context id="DB2Tables">
+
+        <!-- 数据库关键字冲突,自动处理 -->
+        <property name="autoDelimitKeywords" value="true"/>
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <plugin type="com.itfsw.mybatis.generator.plugins.SelectOneByExamplePlugin"/>
+        <plugin type="com.itfsw.mybatis.generator.plugins.BatchInsertPlugin"/>
+        <plugin type="com.itfsw.mybatis.generator.plugins.ModelColumnPlugin"/>
+        <plugin type="com.itfsw.mybatis.generator.plugins.LimitPlugin"/>
+
+
+
+        <commentGenerator>
+            <!-- 是否去除自动生成的注释 -->
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <!-- Mysql数据库连接的信息：驱动类、连接地址、用户名、密码 -->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://111.231.83.166:3306/shop"
+                        userId="root"
+                        password="niutu">
+            <property name="useInformationSchema" value="true"/>
+        </jdbcConnection>
+        <!-- Oracle数据库
+            <jdbcConnection driverClass="oracle.jdbc.OracleDriver"
+                connectionURL="jdbc:oracle:thin:@127.0.0.1:1521:yycg"
+                userId="yycg"
+                password="yycg">
+            </jdbcConnection>
+        -->
+        <!-- 默认为false，把JDBC DECIMAL 和NUMERIC类型解析为Integer，为true时
+        把JDBC DECIMAL 和NUMERIC类型解析为java.math.BigDecimal -->
+        <javaTypeResolver >
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <!-- targetProject：生成POJO类的位置 -->
+        <javaModelGenerator targetPackage="com.mini.shop.dao.generate" targetProject=".\src\main\java">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="false" />
+            <!-- 从数据库返回的值被清理前后的空格 -->
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <!-- targetProject：mapper映射文件生成的位置 -->
+        <sqlMapGenerator targetPackage="com.mini.shop.mapper.generatedMapper" targetProject=".\src\main\resources">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="false" />
+        </sqlMapGenerator>
+
+        <!-- targetProject：mapper接口生成的的位置 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.mini.shop.mapper.generatedMapper" targetProject=".\src\main\java">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="false" />
+        </javaClientGenerator>
+        <!-- 指定数据表 -->
+        <table tableName="cms_help" domainObjectName="CmsHelpDTO"></table>
+        <table tableName="cms_help_category" domainObjectName="CmsHelpCategoryDTO"></table>
+        <table tableName="cms_member_report" domainObjectName="CmsMemberReportDTO"></table>
+        <table tableName="cms_prefrence_area" domainObjectName="CmsPrefrenceAreaDTO"></table>
+        <table tableName="cms_prefrence_area_product_relation" domainObjectName="CmsPrefrenceAreaProductRelationDTO"></table>
+        <table tableName="cms_subject" domainObjectName="CmsSubjectDTO"></table>
+        <table tableName="cms_subject_category" domainObjectName="CmsSubjectCategoryDTO"></table>
+        <table tableName="cms_subject_comment" domainObjectName="CmsSubjectCommentDTO"></table>
+        <table tableName="cms_subject_product_relation" domainObjectName="CmsSubjectProductRelationDTO"></table>
+        <table tableName="cms_topic" domainObjectName="CmsTopicDTO"></table>
+        <table tableName="cms_topic_category" domainObjectName="CmsTopicCategoryDTO"></table>
+        <table tableName="cms_topic_comment" domainObjectName="CmsTopicCommentDTO"></table>
+        <table tableName="oms_cart_item" domainObjectName="OmsCartItemDTO"></table>
+        <table tableName="oms_company_address" domainObjectName="OmsCompanyAddressDTO"></table>
+        <table tableName="oms_order" domainObjectName="OmsOrderDTO"></table>
+        <table tableName="oms_order_item" domainObjectName="OmsOrderItemDTO"></table>
+        <table tableName="oms_order_operate_history" domainObjectName="OmsOrderOperateHistoryDTO"></table>
+        <table tableName="oms_order_return_apply" domainObjectName="OmsOrderReturnApplyDTO"></table>
+        <table tableName="oms_order_return_reason" domainObjectName="OmsOrderReturnReasonDTO"></table>
+        <table tableName="oms_order_setting" domainObjectName="OmsOrderSettingDTO"></table>
+        <table tableName="pms_album" domainObjectName="PmsAlbumDTO"></table>
+        <table tableName="pms_album_pic" domainObjectName="PmsAlbumPicDTO"></table>
+        <table tableName="pms_brand" domainObjectName="PmsBrandDTO"></table>
+        <table tableName="pms_comment" domainObjectName="PmsCommentDTO"></table>
+        <table tableName="pms_comment_replay" domainObjectName="PmsCommentReplayDTO"></table>
+        <table tableName="pms_feight_template" domainObjectName="PmsFeightTemplateDTO"></table>
+        <table tableName="pms_member_price" domainObjectName="PmsMemberPriceDTO"></table>
+        <table tableName="pms_product" domainObjectName="PmsProductDTO"></table>
+        <table tableName="pms_product_attribute" domainObjectName="PmsProductAttributeDTO"></table>
+        <table tableName="pms_product_attribute_category" domainObjectName="PmsProductAttributeCategoryDTO"></table>
+        <table tableName="pms_product_attribute_value" domainObjectName="PmsProductAttributeValueDTO"></table>
+        <table tableName="pms_product_category" domainObjectName="PmsProductCategoryDTO"></table>
+        <table tableName="pms_product_category_attribute_relation" domainObjectName="PmsProductCategoryAttributeRelationDTO"></table>
+        <table tableName="pms_product_full_reduction" domainObjectName="PmsProductFullReductionDTO"></table>
+        <table tableName="pms_product_ladder" domainObjectName="PmsProductLadderDTO"></table>
+        <table tableName="pms_product_operate_log" domainObjectName="PmsProductOperateLogDTO"></table>
+        <table tableName="pms_product_vertify_record" domainObjectName="PmsProductVertifyRecordDTO"></table>
+        <table tableName="pms_sku_stock" domainObjectName="PmsSkuStockDTO"></table>
+        <table tableName="sms_coupon" domainObjectName="SmsCouponDTO"></table>
+        <table tableName="sms_coupon_history" domainObjectName="SmsCouponHistoryDTO"></table>
+        <table tableName="sms_coupon_product_category_relation" domainObjectName="SmsCouponProductCategoryRelationDTO"></table>
+        <table tableName="sms_coupon_product_relation" domainObjectName="SmsCouponProductRelationDTO"></table>
+        <table tableName="sms_flash_promotion" domainObjectName="SmsFlashPromotionDTO"></table>
+        <table tableName="sms_flash_promotion_log" domainObjectName="SmsFlashPromotionLogDTO"></table>
+        <table tableName="sms_flash_promotion_product_relation" domainObjectName="SmsFlashPromotionProductRelationDTO"></table>
+        <table tableName="sms_flash_promotion_session" domainObjectName="SmsFlashPromotionSessionDTO"></table>
+        <table tableName="sms_home_advertise" domainObjectName="SmsHomeAdvertiseDTO"></table>
+        <table tableName="sms_home_brand" domainObjectName="SmsHomeBrandDTO"></table>
+        <table tableName="sms_home_new_product" domainObjectName="SmsHomeNewProductDTO"></table>
+        <table tableName="sms_home_recommend_product" domainObjectName="SmsHomeRecommendProductDTO"></table>
+        <table tableName="sms_home_recommend_subject" domainObjectName="SmsHomeRecommendSubjectDTO"></table>
+        <table tableName="ums_admin" domainObjectName="UmsAdminDTO"></table>
+        <table tableName="ums_admin_login_log" domainObjectName="UmsAdminLoginLogDTO"></table>
+        <table tableName="ums_admin_permission_relation" domainObjectName="UmsAdminPermissionRelationDTO"></table>
+        <table tableName="ums_admin_role_relation" domainObjectName="UmsAdminRoleRelationDTO"></table>
+        <table tableName="ums_growth_change_history" domainObjectName="UmsGrowthChangeHistoryDTO"></table>
+        <table tableName="ums_integration_change_history" domainObjectName="UmsIntegrationChangeHistoryDTO"></table>
+        <table tableName="ums_integration_consume_setting" domainObjectName="UmsIntegrationConsumeSettingDTO"></table>
+        <table tableName="ums_member" domainObjectName="UmsMemberDTO"></table>
+        <table tableName="ums_member_level" domainObjectName="UmsMemberLevelDTO"></table>
+        <table tableName="ums_member_login_log" domainObjectName="UmsMemberLoginLogDTO"></table>
+        <table tableName="ums_member_member_tag_relation" domainObjectName="UmsMemberMemberTagRelationDTO"></table>
+        <table tableName="ums_member_product_category_relation" domainObjectName="UmsMemberProductCategoryRelationDTO"></table>
+        <table tableName="ums_member_receive_address" domainObjectName="UmsMemberReceiveAddressDTO"></table>
+        <table tableName="ums_member_rule_setting" domainObjectName="UmsMemberRuleSettingDTO"></table>
+        <table tableName="ums_member_statistics_info" domainObjectName="UmsMemberStatisticsInfoDTO"></table>
+        <table tableName="ums_member_tag" domainObjectName="UmsMemberTagDTO"></table>
+        <table tableName="ums_member_task" domainObjectName="UmsMemberTaskDTO"></table>
+        <table tableName="ums_permission" domainObjectName="UmsPermissionDTO"></table>
+        <table tableName="ums_role" domainObjectName="UmsRoleDTO"></table>
+        <table tableName="ums_role_permission_relation" domainObjectName="UmsRolePermissionRelationDTO"></table>
+
+
+    </context>
+</generatorConfiguration>
